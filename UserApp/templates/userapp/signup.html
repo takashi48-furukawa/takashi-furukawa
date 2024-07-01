@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <title>ユーザー登録</title>
+</head>
+<body>
+    <h2>ユーザー登録</h2>
+    <form method="post">
+        {% csrf_token %}
+        <label for="id_username">ユーザー名:</label><br>
+        {{ form.username }}
+        <small id="usernameHelpBlock" class="form-text text-muted">必須。150文字以下。文字、数字、@/./+/-/_ のみ使用できます。</small><br>
+        <label for="id_password1">パスワード:</label><br>
+        {{ form.password1 }}
+        <small id="password1HelpBlock" class="form-text text-muted">
+            パスワードは他の個人情報と類似してはいけません。<br>
+            パスワードは少なくとも8文字を含んでいる必要があります。<br>
+            パスワードは一般的に使用されるものであってはいけません。<br>
+            パスワードは完全に数字のみで構成されていてはいけません。
+        </small><br>
+        <label for="id_password2">パスワード確認:</label><br>
+        {{ form.password2 }}
+        <small id="password2HelpBlock" class="form-text text-muted">前回と同じパスワードを入力してください。</small><br>
+
+        <!-- プロフィール情報の入力フォーム -->
+        <label for="id_first_name">名:</label><br>
+        <input type="text" id="id_first_name" name="first_name"><br>
+        <label for="id_last_name">姓:</label><br>
+        <input type="text" id="id_last_name" name="last_name"><br>
+        <label for="id_birthday">誕生日:</label><br>
+        <input type="date" id="id_birthday" name="birthday"><br>
+
+        <button type="submit">登録</button>
+    </form>
+    <br>
+    <a href="{% url 'login' %}"><button>ログイン画面へ</button></a>
+</body>
+</html>

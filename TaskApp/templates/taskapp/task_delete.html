@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>タスク削除</title>
+</head>
+<body>
+    <h2>タスク削除</h2>
+    <p>"{{ task.title }}" を削除してもよろしいですか？</p>
+    <form action="{% url 'task_delete' task.pk %}" method="post">
+        {% csrf_token %}
+        <button type="submit">削除</button>
+    </form>
+</body>
+</html>

@@ -1,0 +1,4 @@
+{% for profile in profiles %}
+    <p>{{ profile.user.username }} - {{ profile.first_name }} {{ profile.last_name }}</p>
+    <!-- 他のプロファイル情報も必要に応じて表示 -->
+{% endfor %}

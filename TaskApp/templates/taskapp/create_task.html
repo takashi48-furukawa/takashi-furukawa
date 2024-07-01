@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <title>タスク作成</title>
+</head>
+<body>
+    <h1>タスク作成</h1>
+    <form method="post" action="{% url 'task_create' %}" id="task_form">
+        {% csrf_token %}
+        <label for="id_text">テキスト:</label><br>
+        <input type="text" id="id_text" name="title"><br><br>
+        <label for="id_description">説明:</label><br>
+        <textarea id="id_description" name="description" rows="4" cols="50"></textarea><br><br>
+        <label for="id_priority">優先度:</label>
+        <select id="id_priority" name="priority">
+            <option value="低">低</option>
+            <option value="中">中</option>
+            <option value="高">高</option>
+        </select><br><br>
+        <label for="id_category">カテゴリ:</label>
+        <select id="id_category" name="category">
+            <option value="仕事">仕事</option>
+            <option value="勉強">勉強</option>
+            <option value="趣味">趣味</option>
+        </select><br><br>
+        <label for="id_due_date">期限:</label><br>
+        <input type="date" id="id_due_date" name="due_date"><br><br>
+        <input type="hidden" id="id_completed" name="completed" value="False">
+        <input type="checkbox" id="id_completed_checkbox">
+        <label for="id_completed_checkbox">完了</label><br><br>
+        <button type="submit">保存</button>
+        <input type="submit" name="delete_task" value="削除">
+    </form>
+    <br>
+    <a href="{% url 'task_list' %}">ホーム画面へ戻る</a><br>
+    <a href="{% url 'incomplete_task_list' %}">未完了タスク一覧へ戻る</a><br>
+    <a href="{% url 'completed_task_list' %}">完了タスク一覧へ</a>
+
+    <script>
+        document.getElementById("task_form").addEventListener("submit", function(event) {
+            var completedCheckbox = document.getElementById("id_completed_checkbox");
+            var completedHiddenField = document.getElementById("id_completed");
+
+            if (completedCheckbox.checked) {
+                completedHiddenField.value = "True";
+            } else {
+                completedHiddenField.value = "False";
+            }
+        });
+    </script>
+</body>
+</html>

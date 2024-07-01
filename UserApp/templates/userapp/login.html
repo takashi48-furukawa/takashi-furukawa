@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ログイン</title>
+</head>
+<body>
+    <h1>ログイン</h1>
+    <form method="post">
+        {% csrf_token %}
+        <div>
+            <label for="id_username">ユーザー名:</label>
+            <input type="text" name="username" id="id_username">
+        </div>
+        <div>
+            <label for="id_password">パスワード:</label>
+            <input type="password" name="password" id="id_password">
+        </div>
+        <button type="submit">ログイン</button>
+    </form>
+</body>
+</html>

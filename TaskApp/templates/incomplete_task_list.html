@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <title>未完了タスク一覧</title>
+</head>
+<body>
+    <h1>未完了タスク一覧</h1>
+    <p>ソート: 
+        <a href="?sort_by=created_at">作成日でソート</a> | 
+        <a href="?sort_by=updated_at">更新日でソート</a>
+    </p>
+    {% for task in tasks %}
+        <div class="task-item">
+            <label>
+                <a href="{% url 'task_detail' task.pk %}">{{ task.title }}</a>
+            </label>
+        </div>
+    {% empty %}
+        <p>未完了のタスクはありません。</p>
+    {% endfor %}
+    <br>
+    <a href="{% url 'task_create' %}">新しいタスクを作成</a><br>
+    <a href="{% url 'completed_task_list' %}">完了タスク一覧</a>
+</body>
+</html>

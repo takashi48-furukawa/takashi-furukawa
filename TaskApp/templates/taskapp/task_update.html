@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>タスクの更新</title>
+</head>
+<body>
+    <h2>タスクの更新</h2>
+    <form method="post">
+        {% csrf_token %}
+        <label for="id_title">タイトル：</label><br>
+        {{ form.title }}<br><br>
+        <label for="id_description">説明：</label><br>
+        {{ form.description }}<br><br>
+        <label for="id_priority">優先度：</label><br>
+        {{ form.priority }}<br><br>
+        <label for="id_category">カテゴリ：</label><br>
+        {{ form.category }}<br><br>
+        <label for="id_due_date">期限：</label><br>
+        {{ form.due_date }}<br><br>
+        <input type="checkbox" id="id_completed" name="completed" {% if form.completed.value %}checked{% endif %}>
+        <label for="id_completed">完了</label><br><br>
+        <button type="submit">更新</button>
+    </form>
+    <br>
+    <a href="{% url 'task_detail' form.instance.pk %}">タスク詳細に戻る</a>
+</body>
+</html>
